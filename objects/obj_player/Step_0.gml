@@ -1,4 +1,4 @@
- /// @description Player movement/animation 
+/// @description Player movement/animation 
 
 // INPUTS
 key_left = keyboard_check(vk_left);
