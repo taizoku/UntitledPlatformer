@@ -1,21 +1,6 @@
-/// @description Player movement/animation 
+/// @description Enemy movement/animation 
 
-// INPUTS
-key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-key_jump = keyboard_check(vk_up) || keyboard_check(ord("W"));
-
-// MOVEMENT
-var move = key_right - key_left;
-
-hsp = move * walksp; // horizontal speed
 vsp += grv; // vertical speed
-
-// jump: check if player is on the floor
-var on_floor = place_meeting(x, y+1, obj_wall)
-if (on_floor && key_jump) {
-	vsp = -7;
-}
 
 // HORIZONTAL COLLISION
 if (place_meeting(x+hsp, y, obj_wall)) {
@@ -39,8 +24,8 @@ move_wrap(sign(x), y, 16);
 
 // ANIMATION
 // check if the player is not on the floor
-if (!on_floor) {
-	sprite_index = spr_player_a;
+if (!place_meeting(x, y+1, obj_wall)) {
+	sprite_index = spr_turtle_a;
 	image_speed = 0;
 	// if its positive, we're moving down (falling)
 	if (sign(vsp) > 0) {
@@ -51,12 +36,16 @@ if (!on_floor) {
 } else {
 	image_speed = 1; // allow animating (set sprite speed)
 	if (hsp == 0) {
-		sprite_index = spr_player;
+		sprite_index = spr_turtle;
 	} else {
-		sprite_index = spr_player_walk;
+		sprite_index = spr_turtle_walk;
 	}
 }
 // orient the sprites in the direction of movement
 if (hsp != 0) {
 	image_xscale = sign(hsp); // 1 if +ve, 0 if -ve
+}
+
+if (hp < 0) {
+	instance_destroy();
 }
