@@ -1,9 +1,10 @@
  /// @description Player attributes 
 
-hsp = 0; // horizontal speed
 vsp = 0; // vertical speed
 grv = 0.3; // gravity
-walksp = 2; // walk speed
+walksp = 0.5; // walk speed
+hsp = walksp; // horizontal speed
 
-hp = 4; // hitpoints
+hp = 3; // hitpoints
 flash = 0; // frame counter (for hit flash)
+hitfrom = 0; // direction last hit from
