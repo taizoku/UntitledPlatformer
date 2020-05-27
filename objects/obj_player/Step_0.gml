@@ -1,9 +1,22 @@
 /// @description Player movement/animation 
 
-// INPUTS
+// INPUTS (KEYBOARD)
 key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
 key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
 key_jump = keyboard_check(vk_up) || keyboard_check(ord("W"));
+
+// Check if already using keyboard
+if (key_left) || (key_right) || (key_jump) {
+	controller = 0;	
+}
+
+// INPUTS (CONTROLLER)
+// override keyboard values if a controller is connected
+// set deadzone of 0.2 radius (range [-1, 1])
+if(abs(gamepad_axis_value(0, gp_axislh)) > 0.2) {
+	key_left = abs(min(gamepad_axis_value(0, gp_axislh), 0));
+	key_right = abs(max(gamepad_axis_value(0, gp_axislh), 0));
+}
 
 // MOVEMENT
 var move = key_right - key_left;
