@@ -5,13 +5,26 @@
 x = obj_player.x;
 y = obj_player.y+2;
 
-// make gun follow the mouse
-image_angle = point_direction(x, y, mouse_x, mouse_y);
+
+// if we're not using a controller
+if (obj_player.controller == 0) {
+	// make gun follow the mouse
+	image_angle = point_direction(x, y, mouse_x, mouse_y);
+} else {
+	var controllerH = gamepad_axis_value(0, gp_axisrh);	
+	var controllerV = gamepad_axis_value(0, gp_axisrv);
+	
+	// check deadzone
+	if (abs(controllerH) > 0.2) || (abs(controllerV) > 0.2) {
+		controllerAngle = point_direction(0, 0, controllerH, controllerV);	
+	}
+	image_angle = controllerAngle;
+}
 
 firingDelay -= 1;
 recoil = max(0, recoil-1);
 
-if (mouse_check_button(mb_left)) && (firingDelay < 0) {
+if (mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb)) && (firingDelay < 0) {
 	recoil = 4;
 	firingDelay = 20; // delay next bullet by at least 5 frames
 	with(instance_create_layer(x, y, "Bullets", obj_bullet)) {

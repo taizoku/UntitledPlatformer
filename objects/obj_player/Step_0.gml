@@ -14,9 +14,16 @@ if (key_left) || (key_right) || (key_jump) {
 // override keyboard values if a controller is connected
 // set deadzone of 0.2 radius (range [-1, 1])
 if(abs(gamepad_axis_value(0, gp_axislh)) > 0.2) {
+	// obtain value between -1 and 1
 	key_left = abs(min(gamepad_axis_value(0, gp_axislh), 0));
 	key_right = abs(max(gamepad_axis_value(0, gp_axislh), 0));
+	controller = 1; // set state for aiming
 }
+
+if(gamepad_button_check_pressed(0, gp_face1)) {
+	key_jump = 1;
+	controller = 1;
+)	
 
 // MOVEMENT
 var move = key_right - key_left;
