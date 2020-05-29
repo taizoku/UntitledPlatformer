@@ -23,7 +23,7 @@ if(abs(gamepad_axis_value(0, gp_axislh)) > 0.2) {
 if(gamepad_button_check_pressed(0, gp_face1)) {
 	key_jump = 1;
 	controller = 1;
-)	
+}	
 
 // MOVEMENT
 var move = key_right - key_left;
