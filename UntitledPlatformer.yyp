@@ -71,6 +71,14 @@
             }
         },
         {
+            "Key": "28ae95e9-60ce-4dec-b7ab-d610db8b1236",
+            "Value": {
+                "id": "86aed4d3-4ea4-4f3d-8a45-3556b1279037",
+                "resourcePath": "rooms\\rm_2\\rm_2.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "2901004f-6fb9-4b16-85d7-2002963fa659",
             "Value": {
                 "id": "3d2a3c3f-f160-434c-817f-e4ed02018e7e",
@@ -114,7 +122,7 @@
             "Key": "5677c8d5-5cc6-4b75-9a37-1839eed3f6cc",
             "Value": {
                 "id": "fba37f57-95a5-40b0-9232-40f2c268badf",
-                "resourcePath": "rooms\\rm_game\\rm_game.yy",
+                "resourcePath": "rooms\\rm_1\\rm_1.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -199,6 +207,14 @@
             }
         },
         {
+            "Key": "8a2cf6dc-0d45-427e-bc6a-a6b648a8920c",
+            "Value": {
+                "id": "e8c80618-e3f7-4016-b794-47814b46a1a7",
+                "resourcePath": "tilesets\\tiles_grass\\tiles_grass.yy",
+                "resourceType": "GMTileSet"
+            }
+        },
+        {
             "Key": "91bc4d47-2374-4cc3-8a4c-dc3c421be8c0",
             "Value": {
                 "id": "33c7615f-2c5b-4d57-ae60-bdebcb4e0c82",
@@ -271,6 +287,14 @@
             }
         },
         {
+            "Key": "ce378464-54f3-4b55-9345-4f2d24a1b8e1",
+            "Value": {
+                "id": "0056377b-ea00-4efc-ad1c-c75b57ac849b",
+                "resourcePath": "objects\\obj_spike\\obj_spike.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "d0c89225-b510-4112-9f7b-7c70040b3312",
             "Value": {
                 "id": "54c21089-0493-4d19-929c-5c70bda33a17",
@@ -308,6 +332,14 @@
                 "id": "4fa52f00-1a80-40c8-b374-cdacba516b5d",
                 "resourcePath": "views\\e0de4045-1e2f-405b-a0c3-9d61b798e788.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "e11c885f-4b22-40c1-9b2b-6ad8c570767b",
+            "Value": {
+                "id": "f8f12763-db74-4a78-90b3-ab5adf29524b",
+                "resourcePath": "sprites\\spr_tile_grass\\spr_tile_grass.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
