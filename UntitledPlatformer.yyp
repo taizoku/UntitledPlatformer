@@ -39,11 +39,27 @@
             }
         },
         {
+            "Key": "0b39593e-4b9d-4a05-a0b6-1e9d37b3bf19",
+            "Value": {
+                "id": "882208cb-6710-4920-805c-0c08f940d88a",
+                "resourcePath": "sprites\\spr_ts_grass\\spr_ts_grass.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "0c38d78e-cbbe-4052-9a83-081a8d905d72",
             "Value": {
                 "id": "136653ad-9da2-4042-b7b0-d5e32a835951",
                 "resourcePath": "sprites\\spr_turtle_dead\\spr_turtle_dead.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "0cebc72a-8b0d-4ff4-8d4a-39b367325a2f",
+            "Value": {
+                "id": "14d258be-b3fb-461e-8957-e78c3321e8b3",
+                "resourcePath": "tilesets\\ts_mount\\ts_mount.yy",
+                "resourceType": "GMTileSet"
             }
         },
         {
@@ -87,6 +103,14 @@
             }
         },
         {
+            "Key": "2fd79b38-4d2d-43a1-bcaf-a1c6f7b08973",
+            "Value": {
+                "id": "bd1febe5-4f1a-4a48-b63d-7ca97560d510",
+                "resourcePath": "sprites\\spr_ts_mount\\spr_ts_mount.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "355f3912-5dd3-4c48-97ca-6c10672c9403",
             "Value": {
                 "id": "e5f93225-7158-47f6-95ea-57018957bcca",
@@ -116,6 +140,14 @@
                 "id": "ea446fb7-d567-4367-87f3-a7c75362b1f4",
                 "resourcePath": "views\\49a4dcdf-27b0-4f04-b548-9e66a0cbb096.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "5090324b-1439-4fb4-9b67-95c186d218cb",
+            "Value": {
+                "id": "09cb25eb-1b8f-4953-befb-22ef64315201",
+                "resourcePath": "tilesets\\ts_grass\\ts_grass.yy",
+                "resourceType": "GMTileSet"
             }
         },
         {
@@ -151,14 +183,6 @@
             }
         },
         {
-            "Key": "68506e0c-0650-4368-ab21-ec0abfee9f10",
-            "Value": {
-                "id": "d18c286a-3af1-4c04-9900-e98303bf12c0",
-                "resourcePath": "sprites\\spr_grass\\spr_grass.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "6c3224eb-053c-43a3-8430-11c5de190779",
             "Value": {
                 "id": "8de43694-a29a-49f2-a1a0-fc538422686f",
@@ -191,6 +215,14 @@
             }
         },
         {
+            "Key": "7d42f163-169f-478d-a319-21bec4804eff",
+            "Value": {
+                "id": "0256fa2e-742e-43ed-af76-1837e7b54941",
+                "resourcePath": "sprites\\spr_spike\\spr_spike.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "7e343123-a7ff-4bee-aed2-8c5dc062b1a8",
             "Value": {
                 "id": "241d2ca6-db6c-4066-a017-085514f9402a",
@@ -212,14 +244,6 @@
                 "id": "004e3514-cdc1-420f-a40d-97d16ba6d43b",
                 "resourcePath": "sprites\\spr_gun\\spr_gun.yy",
                 "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "8a2cf6dc-0d45-427e-bc6a-a6b648a8920c",
-            "Value": {
-                "id": "e8c80618-e3f7-4016-b794-47814b46a1a7",
-                "resourcePath": "tilesets\\tiles_grass\\tiles_grass.yy",
-                "resourceType": "GMTileSet"
             }
         },
         {
@@ -340,14 +364,6 @@
                 "id": "4fa52f00-1a80-40c8-b374-cdacba516b5d",
                 "resourcePath": "views\\e0de4045-1e2f-405b-a0c3-9d61b798e788.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "e11c885f-4b22-40c1-9b2b-6ad8c570767b",
-            "Value": {
-                "id": "f8f12763-db74-4a78-90b3-ab5adf29524b",
-                "resourcePath": "sprites\\spr_tile_grass\\spr_tile_grass.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
