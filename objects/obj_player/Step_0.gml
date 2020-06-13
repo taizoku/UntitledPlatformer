@@ -4,6 +4,7 @@
 key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
 key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
 key_jump = keyboard_check(vk_up) || keyboard_check(ord("W"));
+key_fall = keyboard_check(vk_down) || keyboard_check(ord("S"));
 
 // Check if already using keyboard
 if (key_left) || (key_right) || (key_jump) {
@@ -34,7 +35,12 @@ vsp += grv; // vertical speed
 // jump: check if player is on the floor
 var on_floor = place_meeting(x, y+1, obj_wall)
 if (on_floor && key_jump) {
-	vsp = -7;
+	vsp = -5;
+}
+
+// fast fall: player presses down in air
+if (!on_floor && key_fall) {
+	vsp = 4;	
 }
 
 // HORIZONTAL COLLISION

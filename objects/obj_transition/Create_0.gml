@@ -14,3 +14,7 @@ enum TRANS_MODE
 	RESTART,
 	INTRO
 };
+
+mode = TRANS_MODE.INTRO; // type of transition
+percent = 1; // [0,1] transition fade
+target = room; // room to transition to
