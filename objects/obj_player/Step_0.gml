@@ -45,13 +45,31 @@ vsp += grv; // vertical speed
 // jump: check if player is on the floor
 var on_floor = place_meeting(x, y+1, obj_wall)
 if (on_floor && key_jump) {
-	vsp = -4;
+	vsp = jumpsp;
 }
 
 // fast fall: player presses down in air
 if (!on_floor && key_fall) {
-	vsp = 4;	
+	vsp = -jumpsp;
 }
+
+// need to fix :(
+/*
+// left wall jump
+// if we're touching a wall and we're not on the ground
+if (key_right) {
+	if (place_meeting(x-1, y, obj_wall) && (!place_meeting(x, y+1, obj_wall)) && !key_left) {
+		vsp = jumpsp;	
+	}
+}
+
+// right wall jump
+if (key_left) {
+	if (place_meeting(x+1, y, obj_wall) && (!place_meeting(x, y+1, obj_wall)) && !key_right) {
+		vsp = jumpsp;	
+	}
+}
+*/
 
 // HORIZONTAL COLLISION
 if (place_meeting(x+hsp, y, obj_wall)) {
@@ -71,7 +89,6 @@ if (place_meeting(x, y+vsp, obj_wall)) {
 }
 y += vsp;
 
-move_wrap(sign(x), y, 16);
 #endregion
 
 // ANIMATION
