@@ -1,3 +1,3 @@
 /// @description Restart key
 
-game_restart();
+SlideTransition(TRANS_MODE.RESTART); // enums global in scope

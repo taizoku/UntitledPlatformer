@@ -1,32 +1,42 @@
 /// @description Player movement/animation 
 
-// INPUTS (KEYBOARD)
-key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-key_jump = keyboard_check(vk_up) || keyboard_check(ord("W"));
-key_fall = keyboard_check(vk_down) || keyboard_check(ord("S"));
+#region // INPUTS (KEYBOARD)
+if (hascontrol) {
+	key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+	key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+	key_jump = keyboard_check(vk_up) || keyboard_check(ord("W"));
+	key_fall = keyboard_check(vk_down) || keyboard_check(ord("S"));
 
-// Check if already using keyboard
-if (key_left) || (key_right) || (key_jump) {
-	controller = 0;	
+	// Check if already using keyboard
+	if (key_left) || (key_right) || (key_jump) {
+		controller = 0;	
+	}
+
+	// INPUTS (CONTROLLER)
+	// override keyboard values if a controller is connected
+	// set deadzone of 0.2 radius (range [-1, 1])
+	if(abs(gamepad_axis_value(0, gp_axislh)) > 0.2) {
+		// obtain value between -1 and 1
+		key_left = abs(min(gamepad_axis_value(0, gp_axislh), 0));
+		key_right = abs(max(gamepad_axis_value(0, gp_axislh), 0));
+		controller = 1; // set state for aiming
+	}
+
+	if(gamepad_button_check_pressed(0, gp_face1)) {
+		key_jump = 1;
+		controller = 1;
+	}
+} else {
+		// in case control is taken away
+		// force flags to be off
+		key_left = 0;
+		key_right = 0;
+		key_jump = 0;
+		key_fall = 0;
 }
+#endregion
 
-// INPUTS (CONTROLLER)
-// override keyboard values if a controller is connected
-// set deadzone of 0.2 radius (range [-1, 1])
-if(abs(gamepad_axis_value(0, gp_axislh)) > 0.2) {
-	// obtain value between -1 and 1
-	key_left = abs(min(gamepad_axis_value(0, gp_axislh), 0));
-	key_right = abs(max(gamepad_axis_value(0, gp_axislh), 0));
-	controller = 1; // set state for aiming
-}
-
-if(gamepad_button_check_pressed(0, gp_face1)) {
-	key_jump = 1;
-	controller = 1;
-}	
-
-// MOVEMENT
+#region // MOVEMENT CALCULATION
 var move = key_right - key_left;
 
 hsp = move * walksp; // horizontal speed
@@ -35,7 +45,7 @@ vsp += grv; // vertical speed
 // jump: check if player is on the floor
 var on_floor = place_meeting(x, y+1, obj_wall)
 if (on_floor && key_jump) {
-	vsp = -5;
+	vsp = -4;
 }
 
 // fast fall: player presses down in air
@@ -62,6 +72,7 @@ if (place_meeting(x, y+vsp, obj_wall)) {
 y += vsp;
 
 move_wrap(sign(x), y, 16);
+#endregion
 
 // ANIMATION
 // check if the player is not on the floor
