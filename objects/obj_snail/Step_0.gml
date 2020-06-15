@@ -20,10 +20,13 @@ if (place_meeting(x, y+vsp, obj_wall)) {
 }
 y = y + vsp;
 
-move_wrap(x, y, 8);
+// if the enemy is on the floor and going to fall (half since spr is 16x16)
+if (place_meeting(x, y+1, obj_wall)) && (!place_meeting(x+9, y+1, obj_wall)) {
+	hsp = -hsp; // reverse its direction
+}
 
 // ANIMATION
-// check if the player is not on the floor
+// check if the enemy is not on the floor
 if (!place_meeting(x, y+1, obj_wall)) {
 	sprite_index = spr_snail_a;
 	image_speed = 0;

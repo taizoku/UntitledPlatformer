@@ -24,9 +24,10 @@ if (obj_player.controller == 0) {
 firingDelay -= 1;
 recoil = max(0, recoil-1);
 
-if (mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb)) && (firingDelay < 0) {
+if (keyboard_check(ord("C")) || mouse_check_button(mb_left) || gamepad_button_check(0, gp_shoulderrb)) && (firingDelay < 0) {
 	recoil = 4;
 	firingDelay = 20; // delay next bullet by at least 5 frames
+	ScreenShake(2, 10); // shake the screen
 	with(instance_create_layer(x, y, "Bullets", obj_bullet)) {
 		speed = 5; // 25 ppf (pixels per frame)
 		// use the gun angle (other) and add recoil

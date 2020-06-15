@@ -19,7 +19,7 @@ y = clamp(y, 0+view_h_half+buff, room_height-view_h_half-buff);
 x += random_range(-shake_remain, shake_remain); // rand(-6,6)
 y += random_range(-shake_remain, shake_remain);
 // shake for 60 frames @60fps (reducing remaining shake)
-shake_remain = max(0, shake_remain-((1/shake_length)*shake_magnitude));
+shake_remain = max(0, shake_remain-((1/shake_duration)*shake_magnitude));
 
 // Update camera view (using in-built functions)
 camera_set_view_pos(cam, x-view_w_half, y-view_h_half); // centers player in camera view
