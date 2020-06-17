@@ -1,8 +1,9 @@
 /// @description Player movement/animation 
 
-#region // INPUTS CONFIGURATION
+#region // INPUT CONFIGURATION
+
 if (hascontrol) {
-	// KEYBOARD INPUT
+	// Keyboard Input
 	key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
 	key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
 	key_jump = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
@@ -13,7 +14,7 @@ if (hascontrol) {
 		controller = 0;	
 	}
 
-	// CONTROLLER INPUT
+	// Controller Input
 	// override keyboard values if a controller is connected
 	// set deadzone of 0.2 radius (range [-1, 1])
 	if(abs(gamepad_axis_value(0, gp_axislh)) > 0.2) {
@@ -36,13 +37,43 @@ if (hascontrol) {
 		key_jump = 0;
 		key_fall = 0;
 }
+
 #endregion
 
 #region // MOVEMENT CALCULATION
-var dir = key_right - key_left; // direction
 
-hsp = dir * walksp; // horizontal speed
-vsp += grv; // vertical speed
+// Reduce delay
+wjump_delay = max(wjump_delay-1, 0);
+
+// Restrict moving left and right until there is no delay
+if (wjump_delay == 0) {
+	// Calculate Horizontal Movement
+	var dir = key_right - key_left; // direction
+
+	//hsp = dir * hsp_acc; // horizontal speed
+	hsp = dir * walksp; // horizontal speed
+	hsp = clamp(hsp, -walksp, walksp); // need if adding
+}
+
+// Wall Jump
+if (on_wall != 0) && (!on_ground) && (key_jump) {
+	wjump_delay = wjump_delay_max; // set delay after a wall jump
+	hsp = -on_wall * hsp_wjump;
+	vsp = vsp_wjump;
+}
+
+// Calculate Vertical Movement
+var grv_final = grv;
+var vsp_max_final = vsp_max;
+
+// if on a wall and moving downwards
+if (on_wall != 0) && (vsp > 0) {
+	grv_final = grv_wall;
+	vsp_max_final = vsp_max_wall;
+}
+
+vsp += grv_final; // vertical speed
+vsp = clamp(vsp, -vsp_max_final, vsp_max_final); // limit vsp
 
 // Ground Jump
 // * check if player is on the floor *
@@ -58,25 +89,7 @@ if (!on_floor && key_fall) {
 	vsp = -jumpsp;
 }
 
-// need to fix :(
-/*
-// left wall jump
-// if we're touching a wall and we're not on the ground
-if (key_right) {
-	if (place_meeting(x-1, y, obj_wall) && (!place_meeting(x, y+1, obj_wall)) && !key_left) {
-		vsp = jumpsp;	
-	}
-}
-
-// right wall jump
-if (key_left) {
-	if (place_meeting(x+1, y, obj_wall) && (!place_meeting(x, y+1, obj_wall)) && !key_right) {
-		vsp = jumpsp;	
-	}
-}
-*/
-
-// HORIZONTAL COLLISION
+// Horizontal Collision
 if (place_meeting(x+hsp, y, obj_wall)) {
 	while (!place_meeting(x+sign(hsp), y, obj_wall)) {
 		x += sign(hsp);
@@ -84,10 +97,10 @@ if (place_meeting(x+hsp, y, obj_wall)) {
 	hsp = 0;
 }
 
-// Move horizontally
+// Horizontal Movement
 x += hsp;
 
-// VERTICAL COLLISION
+// Vertical Collision
 if (place_meeting(x, y+vsp, obj_wall)) {
 	while (!place_meeting(x, y+sign(vsp), obj_wall)) {
 		y += sign(vsp);
@@ -95,7 +108,7 @@ if (place_meeting(x, y+vsp, obj_wall)) {
 	vsp = 0;
 }
 
-// Move vertically
+// Vertical Movement
 y += vsp;
 
 // Calculate player status
@@ -120,6 +133,16 @@ if (!on_ground) {
 		var side = bbox_left;
 		if (on_wall == 1) {
 			side = bbox_right;	
+		}
+		dust++; // increase wall friction trail
+		
+		// Dust Particles
+		// If player is falling for more than 3 frames
+		if ((dust > 2) && (vsp > 0)) {
+			with(instance_create_layer(side, bbox_top, "Particles", obj_dust)) {
+				other.dust = 0; // reset dust count to 0
+				hsp = -other.on_wall * 0.5; // give dust some horizontal speed away from the wallp
+			}
 		}
 	} else {
 		dust = 0;
