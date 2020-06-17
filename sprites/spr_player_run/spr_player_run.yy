@@ -2,7 +2,7 @@
     "id": "066069e1-1c63-4fa1-befe-9c79f1083a6b",
     "modelName": "GMSprite",
     "mvc": "1.12",
-    "name": "spr_player_walk",
+    "name": "spr_player_run",
     "For3D": false,
     "HTile": false,
     "VTile": false,
