@@ -23,3 +23,14 @@ shake_remain = max(0, shake_remain-((1/shake_duration)*shake_magnitude));
 
 // Update camera view (using in-built functions)
 camera_set_view_pos(cam, x-view_w_half, y-view_h_half); // centers player in camera view
+
+// Background Parallax (add depth)
+if (layer_exists("Mountains")) {
+	// mountain_layer = layer_get_id("Mountains");
+	layer_x("Mountains", x/2); // move mountains half-dist with camera
+}
+
+if (layer_exists("Trees")) {
+	// mountain_layer = layer_get_id("Mountains");
+	layer_x("Trees", x/6); // smaller amount = closer
+}

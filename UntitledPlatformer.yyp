@@ -143,6 +143,14 @@
             }
         },
         {
+            "Key": "36dd217e-c420-4108-964b-740679c19091",
+            "Value": {
+                "id": "0e87d077-ebc5-48bb-8835-df517ed14a0f",
+                "resourcePath": "sprites\\spr_backdrop\\spr_backdrop.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "385cc017-c94e-4243-acc1-2bf41f87b061",
             "Value": {
                 "id": "c9ae3c42-ab15-4856-a6a6-1b507e7b36bf",
